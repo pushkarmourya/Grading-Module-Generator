@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Marksheet generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dropzone.css') }}">
+</head>
+
+<body>
+    <form action="{{ url_for('upload_file') }}" class="dropzone" method="POST" enctype="multipart/form-data">
+    </form>
+
+    
+    <form action = "generate_individual_marksheet" method="POST">
+        <div class="input_container">
+            <label for="positive_marks">Marks for correct answers</label>
+        <input type="text" id="positive_marks" name="positive_marks" placeholder="+5" required>
+        </div>
+        <div class="input_container">     
+            <label for="negative_marks">Marks for incorrect answers</label>
+               <input type="text" id="negative_marks" name="negative_marks" placeholder="-1" required>
+        </div>
+
+        <button class="button_style input_container" type="submit">
+            Generate Individual Marksheet
+        </button>
+
+    </form>
+    <form action="generate_concise_marksheet" method="POST">
+        <button class="button_style input_container" type="submit">
+            Generate concise Marksheet
+        </button>
+    </form>
+
+    <form action="send_email" method="POST">
+        <button class="button_style input_container" type="submit">
+            Send Email
+        </button>
+    </form>
+    <script src="{{ url_for('static', filename='dropzone.js') }}"></script>
+</body>
+
